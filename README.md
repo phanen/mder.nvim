@@ -4,24 +4,15 @@ A Neovim plugin for checking and unchecking Markdown checkboxes, written in Lua.
 
 Inspired by [jkramer/vim-checkbox](https://github.com/jkramer/vim-checkbox).
 
-## Example
 
-This is an example of the TODOs that I was using and testing with whilst writing this plugin:
+## install
 
-```markdown
-- [ ] Check an unchecked checkbox
-- [x] Uncheck a checked checkbox
-- [ ] Make check symbol customisable
-- [x] Make checking toggleable
-  - [x] Determine if a line contains a checked checkbox
-- [x] Add README
-- [x] Add example keymaps
-```
-
-## Keymaps
-
-There are no default keymaps but these can be added using `vim.keymap.set()`:
-
+use `lazy.nvim`
 ```lua
-vim.keymap.set("n", "<leader>tt", ":lua require('toggle-checkbox').toggle()<CR>")
+{
+  "phanen/toggle-checkbox.nvim",
+  ft = "markdown",
+  keys = { { mode = { "n", "x" }, "<c-space>", "<cmd>lua require('toggle-checkbox').toggle()<cr>" }, },
+  opts = {},
+},
 ```
