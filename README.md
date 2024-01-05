@@ -1,3 +1,4 @@
+[![CI](https://github.com/phanen/toggle-checkbox.nvim/actions/workflows/ci.yml/badge.svg)](https://github.com/phanen/toggle-checkbox.nvim/actions/workflows/ci.yml)
 # toggle-checkbox.nvim
 
 A Neovim plugin for checking and unchecking Markdown checkboxes, written in Lua.
