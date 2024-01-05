@@ -38,8 +38,6 @@ M.toggle = function()
   vim.api.nvim_buf_set_lines(0, vstart, vend, false, lines)
 end
 
-M.setup = function(opts)
-  if opts.checkbox_sym then C = "%[" .. opts.checkbox_sym .. "%]" end
-end
+M.setup = function(_) end
 
 return M
