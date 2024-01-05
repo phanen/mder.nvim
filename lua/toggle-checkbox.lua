@@ -8,7 +8,9 @@ local item_pattern = {
   ["="] = "%=",
 }
 
-local toggle_line = function(line)
+local M = {}
+
+M.toggle_line = function(line)
   local has = function(box) return line:find("^%s*%- " .. box) or line:find("^%s*%d%. " .. box) end
   local check = function() return line:gsub(E, C, 1) end
   local clear = function() return line:gsub(C, E, 1) end
@@ -23,8 +25,6 @@ local toggle_line = function(line)
   return make_box()
 end
 
-local M = {}
-
 M.toggle = function()
   local vstart, vend = vim.fn.getpos(".")[2], vim.fn.getpos("v")[2]
   if vstart > vend then
@@ -33,15 +33,13 @@ M.toggle = function()
   vstart = vstart - 1
   local lines = vim.api.nvim_buf_get_lines(0, vstart, vend, false)
   for i, line in ipairs(lines) do
-    lines[i] = toggle_line(line)
+    lines[i] = M.toggle_line(line)
   end
   vim.api.nvim_buf_set_lines(0, vstart, vend, false, lines)
 end
 
 M.setup = function(opts)
-  if opts.check_sym then C = "%[" .. opts.check_sym .. "%]" end
-  if opts.prefix then P = opts.prefix end
-  if opts.prefix_with_box then P = P .. " [ ]" end
+  if opts.checkbox_sym then C = "%[" .. opts.checkbox_sym .. "%]" end
 end
 
 return M
