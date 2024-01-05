@@ -1,15 +1,22 @@
 local C = "%[x%]"
 local E = "%[ %]"
-local P = "-"
+
+local item_pattern = {
+  ["-"] = "%-",
+  ["+"] = "%+",
+  ["*"] = "%*",
+  ["="] = "%=",
+}
 
 local toggle_line = function(line)
-  local has = function(box) return line:find("^%s*- " .. box) or line:find("^%s*%d%. " .. box) end
+  local has = function(box) return line:find("^%s*%- " .. box) or line:find("^%s*%d%. " .. box) end
   local check = function() return line:gsub(E, C, 1) end
   local clear = function() return line:gsub(C, E, 1) end
   local make_box = function()
-    if line:match "^%s*-%s.*$" then return line:gsub("(%s*- )(.*)", "%1[ ] %2", 1) end
-    if line:match "^%s*%d%s.*$" then return line:gsub("(%s*%d%. )(.*)", "%1[ ] %2", 1) end
-    return line:gsub("(%S+)", P .. " %1", 1)
+    for _, pat in pairs(item_pattern) do
+      if line:match("^%s*" .. pat .. "%s.*$") then return line:gsub("(%s*" .. pat .. " )(.*)", "%1[ ] %2", 1) end
+    end
+    return line:gsub("(%S*)", "* %1", 1)
   end
   if has(C) then return clear() end
   if has(E) then return check() end
