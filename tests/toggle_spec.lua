@@ -21,7 +21,7 @@ describe("toggle-checkbox tests", function()
   })
 
   it("toggle non-empty", asserter {
-    { "raw line", "* raw line", true },
+    { "raw line", "- raw line", true },
     { "- item line", "- [ ] item line", true },
     { "+ [ ] box line", "+  [x] box line", true },
     { "* [x] box line", "*  [ ] box line", true },
