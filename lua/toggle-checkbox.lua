@@ -11,14 +11,19 @@ local item_pattern = {
 local M = {}
 
 M.toggle_line = function(line)
-  local has = function(box) return line:find("^%s*%- " .. box) or line:find("^%s*%d%. " .. box) end
+  local has = function(box)
+    for _, pat in pairs(item_pattern) do
+      if line:find("^%s*" .. pat .. " " .. box) then return true end
+    end
+    return false
+  end
   local check = function() return line:gsub(E, C, 1) end
   local clear = function() return line:gsub(C, E, 1) end
   local make_box = function()
     for _, pat in pairs(item_pattern) do
       if line:match("^%s*" .. pat .. "%s.*$") then return line:gsub("(%s*" .. pat .. " )(.*)", "%1[ ] %2", 1) end
     end
-    return line:gsub("(%S*)", "* %1", 1)
+    return line:gsub("(%S+)", "- %1", 1)
   end
   if has(C) then return clear() end
   if has(E) then return check() end
