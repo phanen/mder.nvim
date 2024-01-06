@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/phanen/toggle-checkbox.nvim/compare/v1.0.0...v1.0.1) (2024-01-06)
+
+
+### Bug Fixes
+
+* iter all pattern ([0328941](https://github.com/phanen/toggle-checkbox.nvim/commit/03289416807beb8172aed56a2a0a99900dd32dbc))
+* use `-` by default ([0328941](https://github.com/phanen/toggle-checkbox.nvim/commit/03289416807beb8172aed56a2a0a99900dd32dbc))
+
 ## 1.0.0 (2024-01-06)
 
 
