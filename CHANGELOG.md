@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/phanen/toggle-checkbox.nvim/compare/v1.0.1...v1.1.0) (2024-01-07)
+
+
+### Features
+
+* use `vim.iter` ([b01da56](https://github.com/phanen/toggle-checkbox.nvim/commit/b01da56f468e6ac0b3aa261b7c28ec44866ee37f))
+
 ## [1.0.1](https://github.com/phanen/toggle-checkbox.nvim/compare/v1.0.0...v1.0.1) (2024-01-06)
 
 
