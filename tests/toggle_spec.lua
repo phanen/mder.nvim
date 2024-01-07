@@ -6,9 +6,9 @@ describe("toggle-checkbox tests", function()
     return function()
       for _, test in ipairs(tests) do
         if test[3] then
-          assert.same(tl(test[1]).id, tl(test[2]).id)
+          assert.same(tl(test[1]), test[2])
         else
-          assert.is_not.same(tl(test[1]).id, tl(test[2]).id)
+          assert.is_not.same(tl(test[1]), test[2])
         end
       end
     end
@@ -16,14 +16,14 @@ describe("toggle-checkbox tests", function()
 
   it("toggle empty", asserter {
     { "", "- ", true },
-    { " ", "- ", true },
-    { "  ", "-  ", true },
+    { " ", "-  ", true },
+    { "  ", "-   ", true },
   })
 
   it("toggle non-empty", asserter {
     { "raw line", "- raw line", true },
     { "- item line", "- [ ] item line", true },
-    { "+ [ ] box line", "+  [x] box line", true },
-    { "* [x] box line", "*  [ ] box line", true },
+    { "+ [ ] box line", "+ [x] box line", true },
+    { "* [x] box line", "* [ ] box line", true },
   })
 end)

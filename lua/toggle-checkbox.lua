@@ -1,34 +1,31 @@
 local C = "%[x%]"
 local E = "%[ %]"
 
-local item_pattern = {
-  ["-"] = "%-",
-  ["+"] = "%+",
-  ["*"] = "%*",
-  ["="] = "%=",
-}
-
 local M = {}
 
-M.toggle_line = function(line)
-  local has = function(box)
-    for _, pat in pairs(item_pattern) do
-      if line:find("^%s*" .. pat .. " " .. box) then return true end
-    end
-    return false
-  end
-  local check = function() return line:gsub(E, C, 1) end
-  local clear = function() return line:gsub(C, E, 1) end
-  local make_box = function()
-    for _, pat in pairs(item_pattern) do
-      if line:match("^%s*" .. pat .. "%s.*$") then return line:gsub("(%s*" .. pat .. " )(.*)", "%1[ ] %2", 1) end
-    end
-    return line:gsub("(%S+)", "- %1", 1)
-  end
-  if has(C) then return clear() end
-  if has(E) then return check() end
-  return make_box()
+local items = { "%-", "%+", "%*", "%=", "%d+%." }
+
+local has_box = function(line, box)
+  return vim.iter(items):any(function(i) return line:find("^%s*" .. i .. " " .. box) end)
 end
+
+local make_box = function(line, fallback)
+  local ok
+  for _, i in ipairs(items) do
+    line, ok = line:gsub("(%s*" .. i .. "%s)(.*)", "%1[ ] %2", 1)
+    if ok == 1 then return line end
+  end
+  return fallback(line)
+end
+
+local toggle_line = function(line)
+  if line == "" then return "- " end
+  if has_box(line, C) then return ({ line:gsub(C, E, 1) })[1] end
+  if has_box(line, E) then return ({ line:gsub(E, C, 1) })[1] end
+  return make_box(line, function(l) return ({ l:gsub("(%S*)", "- %1", 1) })[1] end)
+end
+
+M.toggle_line = toggle_line
 
 M.toggle = function()
   local vstart, vend = vim.fn.getpos(".")[2], vim.fn.getpos("v")[2]
@@ -37,10 +34,7 @@ M.toggle = function()
   end
   vstart = vstart - 1
   local lines = vim.api.nvim_buf_get_lines(0, vstart, vend, false)
-  for i, line in ipairs(lines) do
-    lines[i] = M.toggle_line(line)
-  end
-  vim.api.nvim_buf_set_lines(0, vstart, vend, false, lines)
+  vim.api.nvim_buf_set_lines(0, vstart, vend, false, vim.iter(lines):map(toggle_line):totable())
 end
 
 M.setup = function(_) end
