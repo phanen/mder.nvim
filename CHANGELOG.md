@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.1](https://github.com/phanen/toggle-checkbox.nvim/compare/v1.1.0...v1.1.1) (2024-03-08)
+
+
+### Bug Fixes
+
+* keep indent ([27e5267](https://github.com/phanen/toggle-checkbox.nvim/commit/27e526789fe35f0201fdf8e9dd6b1ed246862e33))
+* list symbol in sentence ([e607be5](https://github.com/phanen/toggle-checkbox.nvim/commit/e607be54e93ffcba595a8b8a8db29a2fd1926074))
+* typo ([f497785](https://github.com/phanen/toggle-checkbox.nvim/commit/f497785048e1a11a250dadcdc4c7f3acda96aa47))
+
 ## [1.1.0](https://github.com/phanen/toggle-checkbox.nvim/compare/v1.0.1...v1.1.0) (2024-01-07)
 
 
