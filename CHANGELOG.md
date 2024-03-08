@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/phanen/mder.nvim/compare/v1.1.1...v2.0.0) (2024-03-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* autolist and codeblock
+
+### Features
+
+* autolist and codeblock ([f8829db](https://github.com/phanen/mder.nvim/commit/f8829db44135d6a5520759afc73e0fab78941967))
+
 ## [1.1.1](https://github.com/phanen/toggle-checkbox.nvim/compare/v1.1.0...v1.1.1) (2024-03-08)
 
 
