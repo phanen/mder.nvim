@@ -3,26 +3,24 @@
 ==============================================================================
 Table of Contents                                *mder.nvim-table-of-contents*
 
-  - install                                                |mder.nvim-install|
 <https://github.com/phanen/toggle-checkbox.nvim/actions/workflows/ci.yml> #
-toggle-checkbox.nvim
-
-A Neovim plugin for checking and unchecking Markdown checkboxes, written in
-Lua.
-
-Inspired by jkramer/vim-checkbox <https://github.com/jkramer/vim-checkbox>.
-
-
-INSTALL                                                    *mder.nvim-install*
-
-use `lazy.nvim`
+mder.nvim
 
 >lua
     {
-      "phanen/toggle-checkbox.nvim",
+      "phanen/mder.nvim",
       ft = "markdown",
-      keys = { { mode = { "n", "x" }, "<c-space>", "<cmd>lua require('toggle-checkbox').toggle()<cr>" }, },
-      opts = {},
+      config = function()
+        au("Filetype", {
+          pattern = { "markdown" },
+          callback = function()
+            map({ "n", "x" }, "<c- >", require("mder").line, { buffer = 0 })
+            map("x", "<c-e>", require("mder").codeblock, { buffer = 0 })
+            map("n", "o", require("mder").listdn, { expr = true, buffer = 0 })
+            map("n", "O", require("mder").listup, { expr = true, buffer = 0 })
+          end,
+        })
+      end,
     },
 <
 

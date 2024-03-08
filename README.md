@@ -7,7 +7,7 @@
   ft = "markdown",
   config = function()
     au("Filetype", {
-      pattern = { "markdown", "typst" },
+      pattern = { "markdown" },
       callback = function()
         map({ "n", "x" }, "<c- >", require("mder").line, { buffer = 0 })
         map("x", "<c-e>", require("mder").codeblock, { buffer = 0 })
