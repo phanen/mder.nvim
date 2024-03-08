@@ -15,7 +15,7 @@ local make_box = function(line)
     line, ok = line:gsub("^(%s*" .. i .. "%s)(.*)", "%1[ ] %2", 1)
     if ok == 1 then return line end
   end
-  return ({ line:gsub("(%S*)", "* %1", 1) })[1]
+  return ({ line:gsub("(%S+)", "* %1", 1) })[1]
 end
 
 local toggle_line = function(line)

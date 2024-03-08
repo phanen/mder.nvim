@@ -1,6 +1,5 @@
 local tl = require("toggle-checkbox").toggle_line
 
--- stylua: ignore
 describe("toggle-checkbox tests", function()
   local asserter = function(tests)
     return function()
@@ -14,22 +13,39 @@ describe("toggle-checkbox tests", function()
     end
   end
 
-  it("toggle empty", asserter {
-    { "", "* ", true },
-    { " ", "*  ", true },
-    { "  ", "*   ", true },
-  })
+  it(
+    "toggle empty",
+    asserter {
+      { "", "* ", true },
+      { " ", "*  ", true },
+      { "  ", "*   ", true },
+    }
+  )
 
-  it("toggle non-empty", asserter {
-    { "raw line", "* raw line", true },
-    { "* item line", "* [ ] item line", true },
-    { "+ [ ] box line", "+ [x] box line", true },
-    { "- [x] box line", "- [ ] box line", true },
-  })
+  it(
+    "toggle non-empty",
+    asserter {
+      { "raw line", "* raw line", true },
+      { "* item line", "* [ ] item line", true },
+      { "+ [ ] box line", "+ [x] box line", true },
+      { "- [x] box line", "- [ ] box line", true },
+    }
+  )
 
-  it("list symbol in sentence", asserter {
-    {"c++ sucks", "* c++ sucks", true},
-    {"* c++ sucks", "* [ ] c++ sucks", true},
-    {"* [ ] c++ sucks", "* [x] c++ sucks", true},
-  })
+  it(
+    "list symbol in sentence",
+    asserter {
+      { "c++ sucks", "* c++ sucks", true },
+      { "* c++ sucks", "* [ ] c++ sucks", true },
+      { "* [ ] c++ sucks", "* [x] c++ sucks", true },
+    }
+  )
+
+  it(
+    "keep indent",
+    asserter {
+      { "  aaa", "  * aaa", true },
+      { "    aaa", "   * aaa", true },
+    }
+  )
 end)
