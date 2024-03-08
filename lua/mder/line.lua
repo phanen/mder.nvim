@@ -5,11 +5,11 @@ local empty = "%[ %]"
 
 local items = { "%-", "%+", "%*", "%=", "%d+%." }
 
-local has_list = function(line)
+local contain_item = function(line)
   return vim.iter(items):any(function(i) return line:find("^%s*" .. i) end)
 end
 
-local has_box = function(line, box)
+local contain_box = function(line, box)
   return vim.iter(items):any(function(i) return line:find("^%s*" .. i .. " " .. box) end)
 end
 
@@ -21,18 +21,18 @@ local make_box = function(line)
   return line
 end
 
-local make_list = function(line)
+local make_item = function(line)
   local new_line, _ = line:gsub("^(%s*)(%S*.*)$", "%1* %2")
   return new_line
 end
 
 local toggle_line = function(line)
-  if not has_list(line) then return make_list(line) end
-  if has_box(line, check) then
+  if not contain_item(line) then return make_item(line) end
+  if contain_box(line, check) then
     local new_line, _ = line:gsub(check, empty, 1)
     return new_line
   end
-  if has_box(line, empty) then
+  if contain_box(line, empty) then
     local new_line, _ = line:gsub(empty, check, 1)
     return new_line
   end
