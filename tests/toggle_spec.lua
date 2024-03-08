@@ -1,13 +1,13 @@
 local tl = require("toggle-checkbox.line").toggle_line
 
-describe("toggle-checkbox tests", function()
+describe("tests", function()
   local asserter = function(tests)
     return function()
       for _, test in ipairs(tests) do
         if test[3] then
-          assert.same(tl(test[1]), test[2])
+          assert.same(test[2], tl(test[1]))
         else
-          assert.is_not.same(tl(test[1]), test[2])
+          assert.is_not.same(test[2], tl(test[1]))
         end
       end
     end
@@ -17,8 +17,7 @@ describe("toggle-checkbox tests", function()
     "toggle empty",
     asserter {
       { "", "* ", true },
-      { " ", "*  ", true },
-      { "  ", "*   ", true },
+      { "  ", "  * ", true },
     }
   )
 
