@@ -1,6 +1,6 @@
 local tl = require("mder.line").toggle_line
 
-describe("tests", function()
+describe("line tests", function()
   local asserter = function(tests)
     return function()
       for _, test in ipairs(tests) do

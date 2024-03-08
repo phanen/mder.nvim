@@ -1,3 +1,5 @@
+local getvpos = require("mder.utils").getvpos
+
 local check = "%[x%]"
 local empty = "%[ %]"
 
@@ -37,6 +39,13 @@ local toggle_line = function(line)
   return make_box(line)
 end
 
+local line = function()
+  local vs, ve = getvpos()
+  local lines = vim.api.nvim_buf_get_lines(0, vs, ve, false)
+  vim.api.nvim_buf_set_lines(0, vs, ve, false, vim.iter(lines):map(toggle_line):totable())
+end
+
 return {
+  line = line,
   toggle_line = toggle_line,
 }
