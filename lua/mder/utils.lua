@@ -5,6 +5,10 @@ local getvpos = function()
   end
   return vs - 1, ve
 end
+
+local k = function(str) return vim.api.nvim_replace_termcodes(str, true, true, true) end
+
 return {
   getvpos = getvpos,
+  k = k,
 }
