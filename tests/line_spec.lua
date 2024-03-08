@@ -1,4 +1,4 @@
-local tl = require("toggle-checkbox.line").toggle_line
+local tl = require("mder.line").toggle_line
 
 describe("tests", function()
   local asserter = function(tests)
