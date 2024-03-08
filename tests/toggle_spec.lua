@@ -1,4 +1,4 @@
-local tl = require("toggle-checkbox").toggle_line
+local tl = require("toggle-checkbox.line").toggle_line
 
 describe("toggle-checkbox tests", function()
   local asserter = function(tests)
@@ -45,7 +45,7 @@ describe("toggle-checkbox tests", function()
     "keep indent",
     asserter {
       { "  aaa", "  * aaa", true },
-      { "    aaa", "   * aaa", true },
+      { "    aaa", "    * aaa", true },
     }
   )
 end)
