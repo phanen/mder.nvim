@@ -1,6 +1,3 @@
-return {
-  codeblock = require("mder.codeblock").codeblock,
-  line = require("mder.line").line,
-  listdn = require("mder.autolist").listdn,
-  listup = require("mder.autolist").listup,
-}
+return setmetatable({}, {
+  __index = function(_, k) return require("mder.commands")[k] end,
+})
