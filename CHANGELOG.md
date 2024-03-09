@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/phanen/mder.nvim/compare/v2.0.1...v2.1.0) (2024-03-09)
+
+
+### Features
+
+* config ([3cf0d23](https://github.com/phanen/mder.nvim/commit/3cf0d2373a6f510d2a2a667ec543845a9bb6ea57))
+
 ## [2.0.1](https://github.com/phanen/mder.nvim/compare/v2.0.0...v2.0.1) (2024-03-09)
 
 
