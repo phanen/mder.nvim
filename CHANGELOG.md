@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/phanen/mder.nvim/compare/v2.0.0...v2.0.1) (2024-03-09)
+
+
+### Bug Fixes
+
+* full name ([6636756](https://github.com/phanen/mder.nvim/commit/66367564b96f4e4038b6bc80ebc844a476f4096e))
+
 ## [2.0.0](https://github.com/phanen/mder.nvim/compare/v1.1.1...v2.0.0) (2024-03-08)
 
 
