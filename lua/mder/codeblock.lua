@@ -1,5 +1,3 @@
-local k = require("mder.utils").k
-
 -- surround codeblock with correct indent
 local wrap_codeblock = function()
   local vs, ve = vim.fn.getpos(".")[2], vim.fn.getpos("v")[2]
@@ -12,11 +10,11 @@ local wrap_codeblock = function()
   lines[#lines + 1] = "```"
   vim.api.nvim_buf_set_lines(0, vs, ve, false, lines)
 
-  vim.api.nvim_feedkeys(k "<esc>", "x", false)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, true, true), "x", false)
   vim.api.nvim_win_set_cursor(0, { vs + 1, 3 })
-  vim.api.nvim_feedkeys(k "A", "n", false)
+  vim.api.nvim_feedkeys("A", "n", false)
 end
 
 return {
-  codeblock = wrap_codeblock,
+  wrap_codeblock = wrap_codeblock,
 }

@@ -7,25 +7,18 @@
 ```
 
 ## Config
+see `config.lua`
 ```lua
-{
+local default_opts = {
   ft = { "markdown", "typst" },
   line = "<c- >",
   codeblock = "<c-e>",
   listdn = "o",
   listup = "O",
-},
+  img_link = "<leader>zi",
+  raw_link = "<leader>zj",
+}
 ```
 
 ## API
-```lua
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = { "markdown" },
-  callback = function()
-    vim.keymap.set({ "x", "n" }, "<c- >", require("mder").line, { buffer = 0 })
-    vim.keymap.set({ "x" }, "<c-e>", require("mder").codeblock, { buffer = 0 })
-    vim.keymap.set({ "n" }, "o", require("mder").listdn, { expr = true, buffer = 0 })
-    vim.keymap.set({ "n" }, "O", require("mder").listup, { expr = true, buffer = 0 })
-  end,
-})
-```
+see `commands.lua`
