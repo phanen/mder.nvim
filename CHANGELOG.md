@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/phanen/mder.nvim/compare/v2.1.0...v3.0.0) (2024-03-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **link:** wrap link actions (normal/visual)
+
+### Features
+
+* **link:** wrap link actions (normal/visual) ([47ce327](https://github.com/phanen/mder.nvim/commit/47ce3271c1f736912d36fd9e45180fc2a33c0c1d))
+
 ## [2.1.0](https://github.com/phanen/mder.nvim/compare/v2.0.1...v2.1.0) (2024-03-09)
 
 
