@@ -12,6 +12,10 @@ local default_opts = {
   },
 }
 
+M.check_box = "%[x%]"
+M.empty_box = "%[ %]"
+M.list_items = { "%-", "%+", "%*", "%=", "%d+%." }
+
 M.setup = function(opts)
   opts = vim.tbl_deep_extend("force", default_opts, opts or {})
   vim.api.nvim_create_autocmd("Filetype", {

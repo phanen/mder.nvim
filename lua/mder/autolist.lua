@@ -19,7 +19,10 @@ local autolist = function(c)
         vim.api.nvim_feedkeys(c .. it .. " [ ] ", "n", false)
         return
       end
-      if line:find("^%s*" .. p .. " ") then vim.api.nvim_feedkeys(c .. it .. " ", "n", false) end
+      if line:find("^%s*" .. p .. " ") then
+        vim.api.nvim_feedkeys(c .. it .. " ", "n", false)
+        return
+      end
     end
     vim.api.nvim_feedkeys(c, "n", false)
   end

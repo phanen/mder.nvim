@@ -13,20 +13,25 @@ local paste = function(wrap_cb, url)
 end
 
 -- return line with wrapped url, or nil if no url in line
--- TODO: also skip if wrapped url exist
--- TODO: two or more url
 local wrap_line = function(cb, line)
   -- https://github.com/sportshead/gx.nvim/blob/77241c1508883882c027aa971b98cd0631ff2a10/lua/gx/helper.lua?plain=1#L49-L60
   local url_patterns = {
-    "(https?://[a-zA-Z%d_/%%%-%.~@\\+#=?&:]+)",
-    "([a-zA-Z%d_/%-%.~@\\+#]+%.[a-zA-Z%d_/%%%-%.~@\\+#=?&:]+)",
+    -- FIXME: wikipedia '–'(0x8211) is not '-'
+    "(https?://[a-zA-Z%d_/%%%-%.~@\\+#=?&:–]+)",
+    "([a-zA-Z%d_/%-%.~@\\+#]+%.[a-zA-Z%d_/%%%-%.~@\\+#=?&:–]+)",
   }
   local s, e
   for _, p in ipairs(url_patterns) do
     s, e = line:find(p)
-    if s then break end
+    if s then
+      local ss, _ = line:find("<" .. p .. ">")
+      if ss then return end
+      ss, _ = line:find("%(" .. p .. "%)")
+      if ss then return end
+      break
+    end
   end
-  if not s then return nil end
+  if not s then return end
   local url = line:sub(s, e) -- NOTE: may not contain 'https?://'
   url = cb(url)
   line = line:sub(1, s - 1) .. url .. line:sub(e + 1)
@@ -52,7 +57,7 @@ local wrap_lines = function(cb)
   vim.api.nvim_buf_set_lines(0, vs, ve, false, lines)
 end
 
--- wrap with pos inicator...
+-- wrap with pos indicator...
 local img_cb = function(url, prefix, name)
   prefix = prefix or "img:"
   name = name or ""

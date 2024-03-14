@@ -1,7 +1,7 @@
-local check = "%[x%]"
-local empty = "%[ %]"
-
-local items = { "%-", "%+", "%*", "%=", "%d+%." }
+local config = require "mder.config"
+local checkbox = config.check_box
+local emptybox = config.empty_box
+local items = config.list_items
 
 local contain_item = function(line)
   return vim.iter(items):any(function(i) return line:find("^%s*" .. i) end)
@@ -26,12 +26,12 @@ end
 
 local toggle_line = function(line)
   if not contain_item(line) then return make_item(line) end
-  if contain_box(line, check) then
-    local new_line, _ = line:gsub(check, empty, 1)
+  if contain_box(line, checkbox) then
+    local new_line, _ = line:gsub(checkbox, emptybox, 1)
     return new_line
   end
-  if contain_box(line, empty) then
-    local new_line, _ = line:gsub(empty, check, 1)
+  if contain_box(line, emptybox) then
+    local new_line, _ = line:gsub(emptybox, checkbox, 1)
     return new_line
   end
   return make_box(line)
