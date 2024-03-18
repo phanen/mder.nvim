@@ -1,5 +1,18 @@
 # Changelog
 
+## [3.1.0](https://github.com/phanen/mder.nvim/compare/v3.0.0...v3.1.0) (2024-03-15)
+
+
+### Features
+
+* skip wrapped url ([a498ae7](https://github.com/phanen/mder.nvim/commit/a498ae7fa792999c0143027cfac10d09187d8b06))
+
+
+### Bug Fixes
+
+* missing return ([a498ae7](https://github.com/phanen/mder.nvim/commit/a498ae7fa792999c0143027cfac10d09187d8b06))
+* unicode pattern ([a498ae7](https://github.com/phanen/mder.nvim/commit/a498ae7fa792999c0143027cfac10d09187d8b06))
+
 ## [3.0.0](https://github.com/phanen/mder.nvim/compare/v2.1.0...v3.0.0) (2024-03-14)
 
 
