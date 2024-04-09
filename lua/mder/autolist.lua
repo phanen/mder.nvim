@@ -11,14 +11,14 @@ local autolist = function(c)
       ["*"] = "%*",
       ["="] = "%=",
     } do
-      if line:find("^%s*" .. p .. " %[x%]") then
-        vim.api.nvim_feedkeys(c .. it .. " [x] ", "n", false)
-        return
-      end
-      if line:find("^%s*" .. p .. " %[ %]") then
-        vim.api.nvim_feedkeys(c .. it .. " [ ] ", "n", false)
-        return
-      end
+      -- if line:find("^%s*" .. p .. " %[x%]") then
+      --   vim.api.nvim_feedkeys(c .. it .. " [x] ", "n", false)
+      --   return
+      -- end
+      -- if line:find("^%s*" .. p .. " %[ %]") then
+      --   vim.api.nvim_feedkeys(c .. it .. " [ ] ", "n", false)
+      --   return
+      -- end
       if line:find("^%s*" .. p .. " ") then
         vim.api.nvim_feedkeys(c .. it .. " ", "n", false)
         return
