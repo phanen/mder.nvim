@@ -1,5 +1,7 @@
 -- surround codeblock with correct indent
-local wrap_codeblock = function()
+local M = {}
+
+M.surround = function()
   local vs, ve = vim.fn.getpos(".")[2], vim.fn.getpos("v")[2]
   if vs > ve then
     vs, ve = ve, vs
@@ -15,6 +17,4 @@ local wrap_codeblock = function()
   vim.api.nvim_feedkeys("A", "n", false)
 end
 
-return {
-  wrap_codeblock = wrap_codeblock,
-}
+return M
