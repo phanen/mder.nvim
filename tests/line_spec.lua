@@ -1,50 +1,63 @@
 local tl = require("mder.line").toggle_line
 
-describe("line tests", function()
-  local asserter = function(tests)
-    return function()
-      for _, test in ipairs(tests) do
-        if test[3] then
-          assert.same(test[2], tl(test[1]))
-        else
-          assert.is_not.same(test[2], tl(test[1]))
-        end
-      end
+local a = function(tests)
+  return function()
+    for _, t in ipairs(tests) do
+      local before, after = unpack(t)
+      assert.same(tl(before), after)
     end
   end
+end
 
+describe("line tests", function()
   it(
     "toggle empty",
-    asserter {
-      { "", "* ", true },
-      { "  ", "  * ", true },
+    a {
+      { "", "* " },
+      { "  ", "  * " },
+    }
+  )
+
+  it(
+    "tab indent",
+    a { -- note: use escape, avoid :retab
+      { "\t", "\t* " },
+      { " \t ", " \t * " },
     }
   )
 
   it(
     "toggle non-empty",
-    asserter {
-      { "raw line", "* raw line", true },
-      { "* item line", "* [ ] item line", true },
-      { "+ [ ] box line", "+ [x] box line", true },
-      { "- [x] box line", "- [ ] box line", true },
+    a {
+      { "line", "* line" },
+      { "* item line", "* [ ] item line" },
+      { "+ [ ] box line", "+ [x] box line" },
+      { "- [x] box line", "- [ ] box line" },
     }
   )
 
   it(
     "list symbol in sentence",
-    asserter {
-      { "c++ sucks", "* c++ sucks", true },
-      { "* c++ sucks", "* [ ] c++ sucks", true },
-      { "* [ ] c++ sucks", "* [x] c++ sucks", true },
+    a {
+      { "c++ sucks", "* c++ sucks" },
+      { "* c++ sucks", "* [ ] c++ sucks" },
+      { "* [ ] c++ sucks", "* [x] c++ sucks" },
     }
   )
 
   it(
     "keep indent",
-    asserter {
-      { "  aaa", "  * aaa", true },
-      { "    aaa", "    * aaa", true },
+    a {
+      { "  aaa", "  * aaa" },
+      { "    aaa", "    * aaa" },
+    }
+  )
+
+  it(
+    "double item",
+    a {
+      { "** aaa", "* ** aaa" },
+      { "**aaa", "* **aaa" },
     }
   )
 end)
