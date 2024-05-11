@@ -1,45 +1,28 @@
-*mder.nvim.txt*         For Neovim >= 0.8.0         Last change: 2024 April 09
+*mder.nvim.txt*          For Neovim >= 0.8.0          Last change: 2024 May 11
 
 ==============================================================================
 Table of Contents                                *mder.nvim-table-of-contents*
 
-  - Install                                                |mder.nvim-install|
-  - Config                                                  |mder.nvim-config|
-  - API                                                        |mder.nvim-api|
-1. Links                                                     |mder.nvim-links|
-<https://github.com/phanen/mder.nvim/actions/workflows/ci.yml> # mder.nvim
+1. mder.nvim                                             |mder.nvim-mder.nvim|
+  - Install                                      |mder.nvim-mder.nvim-install|
+2. Links                                                     |mder.nvim-links|
+<https://github.com/phanen/mder.nvim/actions/workflows/ci.yml>
 
-
-INSTALL                                                    *mder.nvim-install*
-
->lua
-    { "phanen/mder.nvim", ft = "markdown", config = true },
-<
-
-
-CONFIG                                                      *mder.nvim-config*
-
-see `config.lua`
-
->lua
-    local default_opts = {
-      ft = { "markdown", "typst" },
-      line = "<c- >",
-      codeblock = "<c-e>",
-      listdn = "o",
-      listup = "O",
-      img_link = "<leader>zi",
-      raw_link = "<leader>zj",
-    }
-<
-
-
-API                                                            *mder.nvim-api*
-
-see `commands.lua`
 
 ==============================================================================
-1. Links                                                     *mder.nvim-links*
+1. mder.nvim                                             *mder.nvim-mder.nvim*
+
+
+INSTALL                                          *mder.nvim-mder.nvim-install*
+
+
+  BREAKING CHANGES: this lib provide api only now
+>lua
+    { "phanen/mder.nvim", ft = "markdown" }
+<
+
+==============================================================================
+2. Links                                                     *mder.nvim-links*
 
 1. *CI*: https://github.com/phanen/mder.nvim/actions/workflows/ci.yml/badge.svg
 
