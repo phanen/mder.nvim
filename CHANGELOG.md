@@ -1,5 +1,21 @@
 # Changelog
 
+## [4.0.0](https://github.com/phanen/mder.nvim/compare/v3.1.0...v4.0.0) (2024-05-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* api only
+
+### Bug Fixes
+
+* `--` should toggle to `* --` ([12eac8d](https://github.com/phanen/mder.nvim/commit/12eac8dace9cb0f21702d3b8724ae827415a9daa))
+
+
+### Code Refactoring
+
+* api only ([bc467bf](https://github.com/phanen/mder.nvim/commit/bc467bf742c1119d477e72fb0cbaff5c8b21aa78))
+
 ## [3.1.0](https://github.com/phanen/mder.nvim/compare/v3.0.0...v3.1.0) (2024-03-15)
 
 
